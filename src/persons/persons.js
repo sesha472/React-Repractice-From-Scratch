@@ -69,6 +69,16 @@ this.setState({
         cursor:"pointer",
 
     };
+
+    let persons="click the button";
+    if((this.state.showitems)){
+      persons=(<div>
+      <Person userinput={this.inputnamechange}  name={this.state.persons[0].name} age={this.state.persons[0].age} year={this.state.persons[0].year}/>
+      <Person  userinput={this.inputnamechange2} clickperson={()=>{this.changestate("nuve")}} name={this.state.persons[1].name} age={this.state.persons[1].age} year={this.state.persons[1].year}/>
+      <Person userinput={this.inputnamechange3} name={this.state.persons[2].name} age={this.state.persons[2].age} year={this.state.persons[2].year}/>
+      {this.state.country}
+      </div>);
+    };
         return (
             <div className="Persons">
 
@@ -76,13 +86,8 @@ this.setState({
          <br/>
          <button style={buttonstyle} onClick={this.togglepersons}>result</button>
          <br/>
-          {(this.state.showitems)?(
-           <div>
-             <Person userinput={this.inputnamechange}  name={this.state.persons[0].name} age={this.state.persons[0].age} year={this.state.persons[0].year}/>
-             <Person  userinput={this.inputnamechange2} clickperson={()=>{this.changestate("nuve")}} name={this.state.persons[1].name} age={this.state.persons[1].age} year={this.state.persons[1].year}/>
-             <Person userinput={this.inputnamechange3} name={this.state.persons[2].name} age={this.state.persons[2].age} year={this.state.persons[2].year}/>
-             {this.state.country}
-             </div>):("click the button to see result") }
+          {persons}
+           
 
 
             </div>
