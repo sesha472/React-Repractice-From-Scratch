@@ -2,9 +2,9 @@
 import './App.css';
 import React from 'react';
 import Persons from './persons/persons.js';
-import Cal from './calculator/calsi.js';
-import Userinput from './userinput/userinput.js';
-import Useroutput from './useroutput/useroutput.js';
+// import Cal from './calculator/calsi.js';
+// import Userinput from './userinput/userinput.js';
+// import Useroutput from './useroutput/useroutput.js';
 
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ addinputtostate=(event)=>{
   return (
     <div className="App">
       
-    <div className="Appuserinput">
+    {/* <div className="Appuserinput">
      <h1> The userinput output task</h1>
     <Userinput inputtext={this.addinputtostate} 
      />
@@ -31,8 +31,8 @@ addinputtostate=(event)=>{
 
     <div className="Appcal">
           <Cal/>
-    </div>
-    
+    </div> */}
+
     <div className="Apppersons">
          <Persons/>
     </div>
