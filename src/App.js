@@ -1,8 +1,8 @@
 
 import './App.css';
 import React from 'react';
-// import Persons from './persons/persons.js';
-// import Cal from './calculator/calsi.js';
+import Persons from './persons/persons.js';
+import Cal from './calculator/calsi.js';
 import Userinput from './userinput/userinput.js';
 import Useroutput from './useroutput/useroutput.js';
 
@@ -18,13 +18,25 @@ addinputtostate=(event)=>{
  render(){
   return (
     <div className="App">
+      
+    <div className="Appuserinput">
+     <h1> The userinput output task</h1>
     <Userinput inputtext={this.addinputtostate} 
-    defaluusername={this.state.username} />
+     />
     <Useroutput name1={this.state.username} />
     <Useroutput name1={this.state.username}/>
-    <Useroutput name1="sai"/>
-      {/* <Persons/> */}
-      {/* <Cal/> */}
+    <Useroutput name1="sai"> this is default username</Useroutput>
+     
+      </div>
+
+    <div className="Appcal">
+          <Cal/>
+    </div>
+    
+    <div className="Apppersons">
+         <Persons/>
+    </div>
+    
     </div>
   );
 }

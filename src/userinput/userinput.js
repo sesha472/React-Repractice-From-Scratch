@@ -9,7 +9,8 @@ const istyle={
     borderRadius:"5px",
 }
     return(<div>
-        <input style={istyle} type="text" onChange={props.inputtext} value={props.defaluusername} />
+        <input style={istyle} type="text" onChange={props.inputtext} placeholder="enter name" />
+    {props.children}
     </div>)
 }
 export default Userinput;

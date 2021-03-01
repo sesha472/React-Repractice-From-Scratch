@@ -1,9 +1,32 @@
-
-
-.App {
+.Appuserinput {
+  padding: 20px;
   text-align: center;
- 
+  background-color: azure;
+  width: 80%;
+  margin: 10px auto;
+  border-radius: 5px;
+  box-shadow: 10px 20px 60px black;
 }
+
+.Appcal {
+  text-align: center;
+  background-color: rgb(184, 250, 214);
+  width: 60%;
+  margin: 30px auto;
+  border-radius: 20px 0px 20px 0px;
+  
+}
+
+.Apppersons{
+  background-color: lightpink;
+  text-align: center;
+  width: 90%;
+  box-shadow: 10px 20px 60px black;
+  margin :20px auto;
+
+
+}
+
 
 /* .App-logo {
   height: 40vmin;

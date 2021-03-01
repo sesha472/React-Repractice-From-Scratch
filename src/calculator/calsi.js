@@ -6,8 +6,8 @@ import React from 'react';
 class Cal extends React.Component{
 
     state={
-        a:1,
-        b:1,
+        a:0,
+        b:0,
    showresult:false
     }
 
@@ -34,13 +34,32 @@ class Cal extends React.Component{
             };
 
     render(){
+        const inputstyle={
+                backgroundColor:"skyblue",
+                padding:" 10px",
+                outline:"none",
+                border:"none",
+                borderRadius:"5px",
+                margin :"5px",
+            
+        };
+        const buttonstyle={
+            backgroundColor:"yellow",
+            padding:"5px 40px",
+            border:"2px solid black",
+            margin:"10px",
+           boxShadow:"1px 10px 40px",
+            outline:"none",
+            cursor:"pointer",
+    
+        };
         return(
             <div>
 
-            <input type="number" onChange={this.setA } placeholder="enter A number" />
-            <input type="number" onChange={this.setB } placeholder="enter b number" />
-           
-            <button onClick={this.setshowresult}>click</button>
+            <input style={inputstyle} type="number" onChange={this.setA } placeholder="enter A number" />
+            <input style={inputstyle} type="number" onChange={this.setB } placeholder="enter b number" />
+           <br/>
+            <button style={buttonstyle} onClick={this.setshowresult}>click</button>
          {(this.state.showresult)?(
             <div className="result">
                 A : {this.state.a} B : {this.state.b}

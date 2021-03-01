@@ -6,7 +6,7 @@ import './person.css';
     return (
         <div className="Person">
         <p onClick={props.clickperson}> {props.name} is {props.age} years born{props.year}</p>
-       <input type="text " onChange={props.userinput} value={props.name}/>
+       <input type="text " onChange={props.userinput} />
   </div>
         );
 
