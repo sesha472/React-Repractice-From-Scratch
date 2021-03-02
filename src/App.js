@@ -1,41 +1,75 @@
 
 import './App.css';
 import React from 'react';
-import Persons from './persons/persons.js';
+// import Persons from './persons/persons.js';
+import Validation from './validationcomponent/validationcomponet.js';
 // import Cal from './calculator/calsi.js';
 // import Userinput from './userinput/userinput.js';
 // import Useroutput from './useroutput/useroutput.js';
-
+import Charc from './charcomponent/charcomponent.js';
 
 class App extends React.Component {
+// state={
+//   username:"supermax",
+// };
+
+// addinputtostate=(event)=>{
+//   this.setState({username:event.target.value})
+// }
+
 state={
-  username:"supermax",
+  userinput:""
+}
+
+updatestatewithinput=(event)=>{
+  this.setState({
+    userinput:event.target.value
+  });
+};
+deletcharhandler=(index)=>{
+  const textarry=this.state.userinput.split("");
+  textarry.splice(index,1);
+  const returnstring=textarry.join('');
+  this.setState({userinput: returnstring})
+
+
 };
 
-addinputtostate=(event)=>{
-  this.setState({username:event.target.value})
-}
  render(){
+
+  const charlist = this.state.userinput.split('').map((ch,index)=>{
+    return <Charc deletself={()=>{this.deletcharhandler(index)}} inputchar={ch} key={index}/>;
+  });
+
   return (
     <div className="App">
-      
-    {/* <div className="Appuserinput">
+      <div className="Appwwlf">
+   <input type="text"  onChange={this.updatestatewithinput} value={this.state.userinput} />
+   <p >input text : {this.state.userinput}</p>
+   
+
+      <Validation textlength={this.state.userinput.length}/>
+    
+     {charlist}
+        
+
+      </div>
+           {/* <div className="Appuserinput">
+
      <h1> The userinput output task</h1>
-    <Userinput inputtext={this.addinputtostate} 
-     />
+    <Userinput inputtext={this.addinputtostate}  />
     <Useroutput name1={this.state.username} />
     <Useroutput name1={this.state.username}/>
     <Useroutput name1="sai"> this is default username</Useroutput>
-     
-      </div>
+           </div>
 
     <div className="Appcal">
           <Cal/>
     </div> */}
-
-    <div className="Apppersons">
-         <Persons/>
-    </div>
+            
+    {/* <div className="Apppersons">
+    <Persons/>
+    </div> */}
     
     </div>
   );

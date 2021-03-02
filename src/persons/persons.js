@@ -5,14 +5,22 @@ import Person from '../person/person.js';
 class Persons extends React.Component{
     state={
         persons:[
-            {name:"sai1",age:"27", year:"1992"},
-            {name:"sai2",age:"27", year:"1993"},
-            {name:"sai3",age:"29", year:"1994"},
+            {id:1, name:"sai1",age:"27", year:"1992"},
+            {id:2, name:"sai2",age:"27", year:"1993"},
+            {id:3, name:"sai3",age:"29", year:"1994"},
         ],
         country:"indian",
-        showitems:false
+        showitems:false,
+        
     };
 
+
+deletperson=(personindex)=>{
+  const personsarray=this.state.persons;
+  personsarray.splice(personindex,1);
+  this.setState({persons:personsarray});
+};
+ 
   changestate=(arg)=>{
       this.setState({
           persons:[
@@ -27,34 +35,22 @@ class Persons extends React.Component{
    togglepersons=()=>{
     this.setState({showitems:!this.state.showitems})
   };
+ 
 
-  inputnamechange=(event)=>{
-this.setState({
-    persons:[
-        {name:event.target.value ,age:"27", year:"1992"},
-        {name:"sai5",age:"27", year:"1993"},
-        {name:"sai6",age:"29", year:"1994"},
-      ],
-})
+  inputnamechange=(event,personsid)=>{
+      const personindex=this.state.persons.findIndex( p=>{
+        return p.id===personsid;
+      });
+     const  personcopy=this.state.persons[personindex];
+
+     personcopy.name=event.target.value;
+
+     const personsarray =[...this.state.persons];
+     personsarray[personindex]=personcopy;
+     this.setState({persons:personsarray})
+    
   };
-  inputnamechange2=(event)=>{
-    this.setState({
-        persons:[
-            {name:"sai4" ,age:"27", year:"1992"},
-            {name:event.target.value, age:"27", year:"1993"},
-            {name:"sai6",age:"29", year:"1994"},
-          ],
-    })
-      };
-      inputnamechange3=(event)=>{
-        this.setState({
-            persons:[
-                {name:"sai4" ,age:"27", year:"1992"},
-                {name:"sai6",age:"29", year:"1994"},
-                {name:event.target.value, age:"27", year:"1993"},
-              ],
-        })
-          };
+
 
   render(){   
 
@@ -73,17 +69,29 @@ this.setState({
     let persons="click the button";
     if((this.state.showitems)){
       persons=(<div>
-      <Person userinput={this.inputnamechange}  name={this.state.persons[0].name} age={this.state.persons[0].age} year={this.state.persons[0].year}/>
+
+        {this.state.persons.map((personitem,index)=>{
+          return <Person
+          clickperson={()=>{this.deletperson(index)}}
+          userinput={(event)=>this.inputnamechange(event,personitem.id)}
+          name={personitem.name}
+          age={personitem.age}
+          year={personitem.year}
+          key={personitem.id} />
+
+        })
+        
+        }
+      {/* <Person userinput={this.inputnamechange}  name={this.state.persons[0].name} age={this.state.persons[0].age} year={this.state.persons[0].year}/>
       <Person  userinput={this.inputnamechange2} clickperson={()=>{this.changestate("nuve")}} name={this.state.persons[1].name} age={this.state.persons[1].age} year={this.state.persons[1].year}/>
       <Person userinput={this.inputnamechange3} name={this.state.persons[2].name} age={this.state.persons[2].age} year={this.state.persons[2].year}/>
-      {this.state.country}
+      {this.state.country} */}
       </div>);
     };
         return (
             <div className="Persons">
-
-           <button style={buttonstyle} onClick={()=>{this.changestate("buttonsai4")}}>switch names</button>
-         <br/>
+     <button style={buttonstyle} onClick={()=>{this.changestate("buttonsai4")}}>switch names</button> <br/>
+   
          <button style={buttonstyle} onClick={this.togglepersons}>result</button>
          <br/>
           {persons}
