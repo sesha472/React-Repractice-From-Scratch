@@ -1,6 +1,3 @@
-
-
-
 .Appuserinput {
   padding: 20px;
   text-align: center;
@@ -17,7 +14,6 @@
   width: 60%;
   margin: 30px auto;
   border-radius: 20px 0px 20px 0px;
-  
 }
 input {
   text-decoration: none;
@@ -28,17 +24,13 @@ input {
   border: 3px solid rgb(7, 75, 83);
   margin: 5px auto;
 }
-.Apppersons{
+.Apppersons {
   background-color: lightpink;
   text-align: center;
   width: 90%;
   box-shadow: 10px 20px 60px black;
-  margin :20px auto;
-
-
+  margin: 20px auto;
 }
-
-
 
 /* .App-logo {
   height: 40vmin;

@@ -1,6 +1,9 @@
 
 import React from 'react';
+// import Radium from 'radium';
+
 import Person from '../person/person.js';
+// import './persons.css';
 
 class Persons extends React.Component{
     state={
@@ -8,7 +11,7 @@ class Persons extends React.Component{
             {id:1, name:"sai1",age:"27", year:"1992"},
             {id:2, name:"sai2",age:"27", year:"1993"},
             {id:3, name:"sai3",age:"29", year:"1994"},
-        ],
+          ],
         country:"indian",
         showitems:false,
         
@@ -21,16 +24,16 @@ deletperson=(personindex)=>{
   this.setState({persons:personsarray});
 };
  
-  changestate=(arg)=>{
-      this.setState({
-          persons:[
-            {name:arg ,age:"27", year:"1992"},
-            {name:"sai5",age:"27", year:"1993"},
-            {name:"sai6",age:"29", year:"1994"},
-          ],
-          country:"america"
-      })
-  };
+  // changestate=(arg)=>{
+  //     this.setState({
+  //         persons:[
+  //           {name:arg ,age:"27", year:"1992"},
+  //           {name:"sai5",age:"27", year:"1993"},
+  //           {name:"sai6",age:"29", year:"1994"},
+  //         ],
+  //         country:"america"
+  //     })
+  // };
 
    togglepersons=()=>{
     this.setState({showitems:!this.state.showitems})
@@ -54,8 +57,7 @@ deletperson=(personindex)=>{
 
   render(){   
 
-    const buttonstyle={
-
+    const resultstyle={
         backgroundColor:"yellow",
         padding:"5px 10px",
         border:"2px solid black",
@@ -63,8 +65,23 @@ deletperson=(personindex)=>{
        boxShadow:"1px 10px 40px",
         outline:"none",
         cursor:"pointer",
+   ':hover':{
+     backgroundColor:"hotpink",
+     padding:"5px 20px",
+  
 
+   }
     };
+
+    const stylemedia1={
+      '@Media (max-width:800px)':{
+          backgroundColor:"red",
+          width :'350px',
+         
+       }
+   };
+    
+
 
     let persons="click the button";
     if((this.state.showitems)){
@@ -77,28 +94,42 @@ deletperson=(personindex)=>{
           name={personitem.name}
           age={personitem.age}
           year={personitem.year}
-          key={personitem.id} />
-
+          key={personitem.id}/>
         })
-        
-        }
+      
+      }
+
       {/* <Person userinput={this.inputnamechange}  name={this.state.persons[0].name} age={this.state.persons[0].age} year={this.state.persons[0].year}/>
       <Person  userinput={this.inputnamechange2} clickperson={()=>{this.changestate("nuve")}} name={this.state.persons[1].name} age={this.state.persons[1].age} year={this.state.persons[1].year}/>
       <Person userinput={this.inputnamechange3} name={this.state.persons[2].name} age={this.state.persons[2].age} year={this.state.persons[2].year}/>
       {this.state.country} */}
+
       </div>);
-    };
+      resultstyle.backgroundColor="red";
+      resultstyle[':hover']={
+        backgroundColor:'hotpink'
+      }
+    }
+
+    const classes=[];
+    if(this.state.persons.length<=3){
+      classes.push("yellow");
+    }
+    if(this.state.persons.length<=2){
+      classes.push("bold");
+    } if(this.state.persons.length<=1){
+      classes.push("blue");
+    }
         return (
-            <div className="Persons">
-     <button style={buttonstyle} onClick={()=>{this.changestate("buttonsai4")}}>switch names</button> <br/>
-   
-         <button style={buttonstyle} onClick={this.togglepersons}>result</button>
+            <div className = "Persons">
+     {/* <button style={switchstyle} onClick={()=>{this.changestate("buttonsai4")}}>switch names</button> <br/> */}
+       <p className={classes.join(' ')}>this is paragraph</p>
+         <button style={resultstyle} onClick={this.togglepersons}>result</button>
          <br/>
           {persons}
-           
+  
+        </div>
 
-
-            </div>
         );
         }
 };
