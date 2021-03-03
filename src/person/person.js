@@ -25,9 +25,9 @@ const StyleDiv = styled.div`
     margin: 5px auto;
   }
   
-   @media (min-width:700px){
+   @media (max-width:700px){
     width:80%;
-    background-color:yellow;
+    background-color:red;
 }
 `;
  const Person =(props)=>{
