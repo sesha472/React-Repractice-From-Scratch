@@ -1,9 +1,28 @@
 
 import React from 'react';
 // import Radium from 'radium';
+import styled from 'styled-components';
 
 import Person from '../person/person.js';
-// import './persons.css';
+import './persons.css';
+
+
+const StyleButton = styled.button`
+  background-color:  ${props=> props.buttonclicked ?  `red` :`green`};
+  padding:5px 10px;
+  border:2px solid black;
+  marginTop:40px;
+ box-shadow:1px 10px 40px;
+  outline:none;
+  cursor:pointer;
+
+&:hover{
+background-color: ${props=> props.buttonclicked ?  `pink` :`lightgreen`};
+padding:5px 20px;
+
+}
+`;
+
 
 class Persons extends React.Component{
     state={
@@ -57,33 +76,10 @@ deletperson=(personindex)=>{
 
   render(){   
 
-    const resultstyle={
-        backgroundColor:"yellow",
-        padding:"5px 10px",
-        border:"2px solid black",
-        marginTop:"40px",
-       boxShadow:"1px 10px 40px",
-        outline:"none",
-        cursor:"pointer",
-   ':hover':{
-     backgroundColor:"hotpink",
-     padding:"5px 20px",
   
-
-   }
-    };
-
-    const stylemedia1={
-      '@Media (max-width:800px)':{
-          backgroundColor:"red",
-          width :'350px',
-         
-       }
-   };
-    
-
-
+  
     let persons="click the button";
+
     if((this.state.showitems)){
       persons=(<div>
 
@@ -105,9 +101,9 @@ deletperson=(personindex)=>{
       {this.state.country} */}
 
       </div>);
-      resultstyle.backgroundColor="red";
-      resultstyle[':hover']={
-        backgroundColor:'hotpink'
+      StyleButton.backgroundColor="red"
+      StyleButton[':hover']={
+        backgroundColor:'red'
       }
     }
 
@@ -124,7 +120,7 @@ deletperson=(personindex)=>{
             <div className = "Persons">
      {/* <button style={switchstyle} onClick={()=>{this.changestate("buttonsai4")}}>switch names</button> <br/> */}
        <p className={classes.join(' ')}>this is paragraph</p>
-         <button style={resultstyle} onClick={this.togglepersons}>result</button>
+         <StyleButton buttonclicked={this.state.showitems} onClick={this.togglepersons}>result</StyleButton>
          <br/>
           {persons}
   
